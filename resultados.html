@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Resultados · Diagnóstico DJ CHASEP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14213D;--navy2:#1F2E50;--cream:#F6F3EC;--card:#FFFDF8;--gold:#E0A93B;--gold-d:#8A5C0A;--ink:#14213D;--muted:#4A5568;--line:#E4DCCB;--red:#B42318;--redbg:#FDECEA;--amb:#8A5C0A;--ambbg:#FFF4DB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:'Rubik',Arial,sans-serif;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{background:var(--navy);color:var(--cream);padding:24px 0 20px;border-bottom:5px solid var(--gold)}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1{font-family:'Oswald',Arial,sans-serif;font-size:28px;text-transform:uppercase;line-height:1.1;margin:6px 0}
+.meta{color:#C9D3E3;font-size:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.meta button{background:transparent;color:var(--cream);border:1px solid #3A4A6B;border-radius:8px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.demo{background:var(--gold);color:var(--navy);font-weight:700;border-radius:6px;padding:2px 8px;font-size:12px;letter-spacing:1px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:16px 0 4px;scrollbar-width:none}
+.chip{flex:none;border:1px solid #CFC6B3;background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.kpis .kpi:last-child{grid-column:1/-1}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(5,1fr)}.kpis .kpi:last-child{grid-column:auto}}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi .l{font-size:13px;color:var(--muted)}
+.kpi .v{font-family:'Oswald',Arial,sans-serif;font-size:34px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .h{font-size:12px;color:var(--muted)}
+.kpi.hero{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.kpi.hero .l,.kpi.hero .h{color:#C9D3E3}.kpi.hero .v{color:var(--gold)}
+h2{font-family:'Oswald',Arial,sans-serif;font-size:20px;text-transform:uppercase;margin:26px 0 10px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card h3{font-size:15px;font-weight:500;margin-bottom:12px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;margin-bottom:10px}
+.bar .n{font-size:14px}
+.bar .c{font-size:14px;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.bar .t{grid-column:1/-1;height:10px;background:#EFE8D8;border-radius:5px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--navy);border-radius:5px}
+.bar.top .t i{background:var(--gold)}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:500;color:var(--muted);font-size:13px;cursor:pointer;user-select:none;background:#FBF8F1}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-size:12px;border-radius:6px;padding:2px 8px;margin:1px 4px 1px 0;white-space:nowrap}
+.tag.r{background:var(--redbg);color:var(--red)}.tag.a{background:var(--ambbg);color:var(--amb)}.tag.ok{background:#E7F3EC;color:#1E6B45}
+.voices details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
+.voices summary{padding:14px 16px;cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between}
+.voices summary::after{content:'+';color:var(--gold-d);font-weight:700}
+.voices details[open] summary::after{content:'–'}
+.voices ul{list-style:none;padding:0 16px 12px}
+.voices li{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.voices li b{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-bottom:2px}
+.gate{max-width:420px;margin:60px auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+.gate input{width:100%;font:inherit;border:1px solid #CFC6B3;border-radius:10px;padding:12px;margin:12px 0}
+.gate button{width:100%;font:inherit;font-weight:500;background:var(--navy);color:var(--cream);border:0;border-radius:10px;padding:12px;cursor:pointer}
+.err{color:var(--red);font-size:14px;margin-top:8px}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+footer{color:var(--muted);font-size:13px;padding:30px 0 40px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">CHASEP · Royal Prestige</div>
+  <h1>Resultados · Diagnóstico Distribuidores Junior</h1>
+  <div class="meta"><span id="status">Cargando…</span><button id="refresh" type="button">Actualizar</button></div>
+</div></header>
+
+<div class="wrap" id="app"></div>
+
+<script>
+// ▼▼ La misma URL de Apps Script que en encuesta.html ▼▼
+const SCRIPT_URL = '';
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const num = v => { const n = Number(v); return isFinite(n) ? n : 0; };
+const pct = v => isFinite(v) ? Math.round(v*100)+'%' : '—';
+const lista = v => Array.isArray(v) ? v : String(v||'').split(', ').filter(Boolean);
+const store = { get(k){ try{return localStorage.getItem(k)}catch(e){return null} }, set(k,v){ try{localStorage.setItem(k,v)}catch(e){} } };
+
+// Datos de ejemplo SOLO para ver el tablero antes de configurar (nombres ficticios)
+const DEMO = [
+  {nombre:'Ejemplo 1',sucursal:'Santa Fe',antiguedad:'3 a 6 meses',seguridad:6,partes:'Manejo de objeciones, Cierre de la venta',objecion:'"Está muy caro"',capacitaciones:3,fuentes:'Referidos, Familiares y conocidos',mejorFuente:'Referidos',registro:'WhatsApp, Libreta / agenda de papel',activos:2,arranque:1,juntas:'Una vez por semana',citas:6,demos:4,ventas:1,quitaTiempo:'Confirmar citas que se cancelan',pedido:'Más bases VIP',metaDic:12,falta:'Más citas por semana'},
+  {nombre:'Ejemplo 2',sucursal:'Boulevares',antiguedad:'Menos de 3 meses',seguridad:4,partes:'Cocinada / demostración práctica, Cierre de la venta',objecion:'"Lo tengo que pensar"',capacitaciones:5,fuentes:'Familiares y conocidos',mejorFuente:'Familiares',registro:'No llevo un registro',activos:0,arranque:2,juntas:'No tenemos juntas fijas',citas:3,demos:2,ventas:0,quitaTiempo:'Traslados',pedido:'Acompañamiento en demos',metaDic:6,falta:'Seguridad en el cierre'},
+  {nombre:'Ejemplo 3',sucursal:'Bosques',antiguedad:'6 a 12 meses',seguridad:8,partes:'Financiamiento y papeleo',objecion:'"Tengo que consultarlo con mi esposo"',capacitaciones:2,fuentes:'Referidos, Bases VIP, Redes sociales',mejorFuente:'Bases VIP',registro:'Excel o Google Sheets',activos:4,arranque:2,juntas:'Varias veces por semana',citas:10,demos:7,ventas:3,quitaTiempo:'Papeleo de financiamiento',pedido:'Proceso de crédito más rápido',metaDic:30,falta:'Reclutar 2 personas'},
+  {nombre:'Ejemplo 4',sucursal:'Santa Fe',antiguedad:'Más de 1 año',seguridad:9,partes:'Apertura / romper el hielo',objecion:'"Ya tengo ollas"',capacitaciones:1,fuentes:'Referidos, Eventos / exhibiciones',mejorFuente:'Referidos',registro:'App o CRM, Calendario del celular',activos:5,arranque:1,juntas:'Diario',citas:12,demos:8,ventas:3,quitaTiempo:'Cobranza',pedido:'Herramienta para seguimiento',metaDic:35,falta:'Más equipo activo'}
+];
+
+let DATA = [], filtro = 'Todas', orden = {k:'conv', dir:-1}, esDemo = false;
+
+async function cargar(){
+  if (!SCRIPT_URL){ esDemo = true; DATA = DEMO; render(); return; }
+  const key = new URLSearchParams(location.search).get('key') || store.get('dj_key');
+  if (!key){ gate(); return; }
+  $('#status').textContent = 'Cargando…';
+  try{
+    const r = await fetch(SCRIPT_URL + '?key=' + encodeURIComponent(key));
+    const j = await r.json();
+    if (!j.ok){ if (/Configura/.test(j.error||'')){ $('#status').textContent = j.error; $('#app').innerHTML=''; return; } gate('Clave incorrecta.'); return; }
+    store.set('dj_key', key);
+    DATA = j.rows; render();
+  }catch(e){ $('#status').textContent = 'No se pudo cargar. Revisa tu conexión y que el Apps Script esté implementado con acceso "Cualquier persona".'; }
+}
+
+function gate(msg){
+  $('#status').textContent = 'Acceso restringido';
+  $('#app').innerHTML = `<div class="gate"><h2 style="margin-top:0">Ingresa la clave</h2><p style="color:var(--muted);font-size:14px">La misma que pusiste en CLAVE_RESULTADOS del Apps Script.</p><input id="k" type="password" autocomplete="off" aria-label="Clave"><button id="go" type="button">Ver resultados</button>${msg?`<div class="err">${esc(msg)}</div>`:''}</div>`;
+  const go = () => { store.set('dj_key', $('#k').value.trim()); cargar(); };
+  $('#go').onclick = go; $('#k').onkeydown = e => { if (e.key==='Enter') go(); };
+}
+
+function conteo(rows, campo){
+  const m = {};
+  rows.forEach(r => lista(r[campo]).forEach(v => m[v] = (m[v]||0)+1));
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]);
+}
+function barras(titulo, pares, total){
+  if (!pares.length) return `<div class="card"><h3>${esc(titulo)}</h3><div class="empty">Sin datos</div></div>`;
+  const max = Math.max(...pares.map(p=>p[1]));
+  return `<div class="card"><h3>${esc(titulo)}</h3>${pares.map(([n,c])=>`<div class="bar${c===max&&max>0?' top':''}"><span class="n">${esc(n)}</span><span class="c">${c}${total?` · ${Math.round(c/total*100)}%`:''}</span><span class="t"><i style="width:${c/max*100}%"></i></span></div>`).join('')}</div>`;
+}
+function alertas(r){
+  const t = [], d = num(r.demos), v = num(r.ventas), reg = String(r.registro||'');
+  if (num(r.seguridad) <= 5) t.push('<span class="tag r">Reforzar demo</span>');
+  if (d > 0 && v/d < 0.25) t.push('<span class="tag r">Baja conversión</span>');
+  if (num(r.citas) < 5) t.push('<span class="tag a">Pocas citas</span>');
+  if (/No llevo|Libreta/.test(reg) && !/Excel|App/.test(reg)) t.push('<span class="tag a">Sin sistema</span>');
+  if (/No tenemos/.test(r.juntas||'')) t.push('<span class="tag a">Sin juntas</span>');
+  return t.length ? t.join('') : '<span class="tag ok">En ritmo</span>';
+}
+
+function ultima(){
+  const f = DATA.map(r=>Date.parse(r.fecha)).filter(isFinite);
+  return f.length ? ' · última: ' + new Date(Math.max(...f)).toLocaleString('es-MX',{dateStyle:'medium',timeStyle:'short'}) : '';
+}
+function render(){
+  const sucs = ['Todas', ...[...new Set(DATA.map(r=>r.sucursal).filter(Boolean))].sort()];
+  if (!sucs.includes(filtro)) filtro = 'Todas';
+  const rows = filtro==='Todas' ? DATA : DATA.filter(r=>r.sucursal===filtro);
+  const n = rows.length;
+  const sum = k => rows.reduce((a,r)=>a+num(r[k]),0);
+  const segProm = n ? sum('seguridad')/n : NaN;
+  const conv = sum('demos') ? sum('ventas')/sum('demos') : NaN;
+  const citaDemo = sum('citas') ? sum('demos')/sum('citas') : NaN;
+
+  $('#status').innerHTML = (esDemo?'<span class="demo">DEMO</span> Datos de ejemplo · configura SCRIPT_URL':`${DATA.length} respuestas${ultima()}`);
+
+  const tabla = rows.map(r=>({...r, conv: num(r.demos)? num(r.ventas)/num(r.demos) : -1}))
+    .sort((a,b)=>{ const x=a[orden.k], y=b[orden.k]; return (typeof x==='number'&&typeof y==='number' ? x-y : String(x).localeCompare(String(y)))*orden.dir; });
+  const cols = [['nombre','Distribuidor'],['sucursal','Sucursal'],['seguridad','Seguridad',1],['citas','Citas/sem',1],['demos','Demos/sem',1],['ventas','Ventas/sem',1],['conv','Demo→venta',1],['activos','Equipo activo',1],['metaDic','Meta 31 dic',1],['alertas','Foco']];
+
+  const voces = [['objecion','Objeciones que más les cuestan'],['quitaTiempo','Lo que les quita tiempo'],['pedido','Lo que le piden a la oficina'],['falta','Lo que les falta para su meta'],['capUtil','Capacitación que más les ha servido']];
+
+  $('#app').innerHTML = `
+  <div class="chips" role="tablist">${sucs.map(s=>`<button class="chip${s===filtro?' on':''}" data-s="${esc(s)}" type="button">${esc(s)}</button>`).join('')}</div>
+  ${n===0?'<div class="card empty" style="margin-top:14px">Aún no hay respuestas.</div>':`
+  <div class="kpis">
+    <div class="kpi"><div class="l">Respuestas</div><div class="v">${n}</div><div class="h">distribuidores</div></div>
+    <div class="kpi"><div class="l">Seguridad en demo</div><div class="v">${isFinite(segProm)?segProm.toFixed(1):'—'}</div><div class="h">promedio de 10</div></div>
+    <div class="kpi hero"><div class="l">Conversión demo→venta</div><div class="v">${pct(conv)}</div><div class="h">${sum('ventas')} ventas de ${sum('demos')} demos/sem</div></div>
+    <div class="kpi"><div class="l">Cita→demo</div><div class="v">${pct(citaDemo)}</div><div class="h">${sum('citas')} citas/sem</div></div>
+    <div class="kpi"><div class="l">Meta al 31 dic</div><div class="v">${sum('metaDic').toLocaleString('es-MX')}</div><div class="h">ventas comprometidas</div></div>
+  </div>
+
+  <h2>Capacitación</h2>
+  <div class="grid">
+    ${barras('Parte de la demo que más les cuesta', conteo(rows,'partes'), n)}
+    ${barras('Seguridad en demo (1-10)', [['1 a 5 · reforzar',rows.filter(r=>num(r.seguridad)<=5).length],['6 a 7 · en desarrollo',rows.filter(r=>num(r.seguridad)>=6&&num(r.seguridad)<=7).length],['8 a 10 · seguros',rows.filter(r=>num(r.seguridad)>=8).length]], n)}
+  </div>
+
+  <h2>Operación</h2>
+  <div class="grid">
+    ${barras('Dónde llevan su seguimiento', conteo(rows,'registro'), n)}
+    ${barras('Fuentes de prospectos', conteo(rows,'fuentes'), n)}
+    ${barras('Frecuencia de juntas con su equipo', conteo(rows,'juntas'), n)}
+    ${barras('Antigüedad', conteo(rows,'antiguedad'), n)}
+  </div>
+
+  <h2>Por distribuidor</h2>
+  <div class="tablewrap"><table>
+    <thead><tr>${cols.map(([k,l,isN])=>`<th class="${isN?'num':''}" data-k="${k}">${l}${orden.k===k?(orden.dir<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead>
+    <tbody>${tabla.map(r=>`<tr><td><b>${esc(r.nombre)}</b></td><td>${esc(r.sucursal)}</td><td class="num">${esc(r.seguridad)}</td><td class="num">${esc(r.citas)}</td><td class="num">${esc(r.demos)}</td><td class="num">${esc(r.ventas)}</td><td class="num">${r.conv<0?'—':pct(r.conv)}</td><td class="num">${esc(r.activos)}</td><td class="num">${esc(r.metaDic)}</td><td>${alertas(r)}</td></tr>`).join('')}</tbody>
+  </table></div>
+
+  <h2>Lo que nos dijeron</h2>
+  <div class="voices">${voces.map(([k,t],i)=>{ const it=rows.filter(r=>String(r[k]||'').trim()); return `<details${i===0?' open':''}><summary>${t} (${it.length})</summary><ul>${it.map(r=>`<li><b>${esc(r.nombre)} · ${esc(r.sucursal)}</b>${esc(r[k])}</li>`).join('')||'<li>Sin respuestas</li>'}</ul></details>`; }).join('')}</div>
+  `}
+  <footer>Foco: <b>Reforzar demo</b> = seguridad ≤ 5 · <b>Baja conversión</b> = menos de 25% demo→venta · <b>Pocas citas</b> = menos de 5 por semana · <b>Sin sistema</b> = libreta o sin registro · <b>Sin juntas</b> = sin juntas fijas.</footer>`;
+
+  document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ filtro=b.dataset.s; render(); });
+  document.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(k==='alertas')return; orden = {k, dir: orden.k===k ? -orden.dir : -1}; render(); });
+}
+
+$('#refresh').onclick = cargar;
+cargar();
+</script>
+</body>
+</html>
