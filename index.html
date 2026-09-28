@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diagnóstico Distribuidores Junior · CHASEP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14213D;--navy2:#1F2E50;--cream:#F6F3EC;--card:#FFFDF8;--gold:#E0A93B;--gold-d:#8A5C0A;--ink:#14213D;--muted:#4A5568;--line:#E4DCCB;--err:#B42318}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:'Rubik',Arial,sans-serif;font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+header{background:var(--navy);color:var(--cream);padding:28px 16px 22px;border-bottom:5px solid var(--gold)}
+.wrap{max-width:640px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1{font-family:'Oswald',Arial,sans-serif;font-size:30px;line-height:1.1;text-transform:uppercase;margin:6px 0 8px}
+header p{color:#C9D3E3;font-size:15px}
+.progress{height:6px;background:var(--navy2);border-radius:3px;margin-top:18px;overflow:hidden}
+.progress i{display:block;height:100%;width:25%;background:var(--gold);transition:width .3s}
+.steplabel{font-size:13px;color:#C9D3E3;margin-top:8px}
+main{padding:20px 16px 120px}
+.step{display:none}.step.on{display:block}
+h2{font-family:'Oswald',Arial,sans-serif;font-size:24px;text-transform:uppercase;margin:4px 0 4px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:18px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.q label.t{display:block;font-weight:500;margin-bottom:10px}
+.q .req{color:var(--gold-d)}
+.q.bad{border-color:var(--err)}
+.q .msg{display:none;color:var(--err);font-size:14px;margin-top:8px}.q.bad .msg{display:block}
+input[type=text],input[type=number],textarea,select{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid #CFC6B3;border-radius:10px;padding:12px}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(224,169,59,.45);border-color:var(--gold-d)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}
+.opt input{width:20px;height:20px;accent-color:var(--navy)}
+.opt:has(input:checked){border-color:var(--navy);background:#EEF1F7}
+.scale{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.scale label{text-align:center;padding:10px 0;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font-weight:500}
+.scale input{position:absolute;opacity:0;pointer-events:none}
+.scale label:has(input:checked){background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.scale-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:6px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.trio small{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(246,243,236,.96);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+nav .wrap{display:flex;gap:10px}
+button{font:inherit;font-weight:500;border:0;border-radius:12px;padding:14px 18px;cursor:pointer}
+.prev{background:transparent;color:var(--ink);border:1px solid #CFC6B3}
+.next{flex:1;background:var(--navy);color:var(--cream)}
+.next:disabled{opacity:.6}
+.done{text-align:center;padding:48px 8px}
+.done .big{font-family:'Oswald',Arial,sans-serif;font-size:34px;text-transform:uppercase;margin:12px 0}
+.check{width:72px;height:72px;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center}
+.warn{background:#FFF4DB;border:1px solid var(--gold);border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:14px;display:none}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">CHASEP · Royal Prestige</div>
+  <h1>Diagnóstico Distribuidores Junior</h1>
+  <p>Queremos conocerte para darte herramientas que te hagan más productivo. No hay respuestas buenas ni malas. 5 minutos.</p>
+  <div class="progress"><i id="bar"></i></div>
+  <div class="steplabel" id="steplabel">Paso 1 de 4</div>
+</div></header>
+
+<main><div class="wrap">
+  <div class="warn" id="warn">Modo prueba: falta configurar SCRIPT_URL, las respuestas no se guardarán.</div>
+  <form id="f" novalidate></form>
+  <div class="done" id="done" hidden>
+    <div class="check"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+    <div class="big">¡Gracias!</div>
+    <p class="sub">Con tus respuestas vamos a preparar herramientas a tu medida. Nos vemos en la reunión.</p>
+  </div>
+</div></main>
+
+<nav id="nav"><div class="wrap">
+  <button type="button" class="prev" id="prev" hidden>Atrás</button>
+  <button type="button" class="next" id="next">Siguiente</button>
+</div></nav>
+
+<script>
+// ▼▼ Pega aquí la URL de tu Apps Script (termina en /exec) ▼▼
+const SCRIPT_URL = '';
+
+const PASOS = [
+  {t:'Tus datos', s:'Para saber quién eres y dónde trabajas.', q:[
+    {k:'nombre', t:'Nombre completo', type:'text', req:1},
+    {k:'sucursal', t:'Sucursal', type:'select', req:1, o:['Santa Fe','Echegaray','Boulevares','Bosques','San Ángel']},
+    {k:'antiguedad', t:'¿Cuánto tiempo llevas como distribuidor?', type:'radio', req:1, o:['Menos de 3 meses','3 a 6 meses','6 a 12 meses','Más de 1 año']}
+  ]},
+  {t:'1. Capacitación', s:'Qué tan preparado te sientes hoy.', q:[
+    {k:'seguridad', t:'Del 1 al 10, ¿qué tan seguro te sientes haciendo una demostración completa hoy?', type:'scale', req:1},
+    {k:'partes', t:'¿Qué parte de la demostración te cuesta más?', type:'check', req:1, o:['Apertura / romper el hielo','Presentación del producto','Cocinada / demostración práctica','Manejo de objeciones','Cierre de la venta','Financiamiento y papeleo']},
+    {k:'objecion', t:'¿Qué objeción de cliente te cuesta más contestar?', type:'area', req:1},
+    {k:'capacitaciones', t:'¿Cuántas capacitaciones tomaste el último mes?', type:'number', req:1},
+    {k:'capUtil', t:'¿Cuál capacitación te ha servido más y por qué?', type:'area'}
+  ]},
+  {t:'2. Tu operación', s:'Cómo tienes armado tu negocio hoy.', q:[
+    {k:'fuentes', t:'¿De dónde obtienes tus prospectos hoy?', type:'check', req:1, o:['Referidos','Bases VIP','Redes sociales','Eventos / exhibiciones','Familiares y conocidos','Puerta a puerta / en frío']},
+    {k:'mejorFuente', t:'De esas fuentes, ¿cuál te funciona MEJOR?', type:'text', req:1},
+    {k:'registro', t:'¿Dónde llevas tus clientes, citas y seguimientos?', type:'check', req:1, o:['Libreta / agenda de papel','Excel o Google Sheets','WhatsApp','Calendario del celular','App o CRM','No llevo un registro']},
+    {k:'activos', t:'¿Cuántos vendedores activos tienes en tu equipo hoy?', type:'number', req:1},
+    {k:'arranque', t:'¿Cuántas personas tienes en capacitación / arranque?', type:'number', req:1},
+    {k:'juntas', t:'¿Cada cuánto te juntas con tu equipo?', type:'radio', req:1, o:['Diario','Varias veces por semana','Una vez por semana','Cada quince días o menos','No tenemos juntas fijas']},
+    {k:'semana', t:'En una semana normal… (números reales, no ideales)', type:'trio', req:1}
+  ]},
+  {t:'3. Tus necesidades', s:'Queremos escucharte.', q:[
+    {k:'quitaTiempo', t:'¿Qué es lo que más tiempo te quita y NO te genera ventas?', type:'area', req:1},
+    {k:'pedido', t:'Si pudieras pedirle a la oficina o a la dirección UNA sola cosa para vender más, ¿qué sería?', type:'area', req:1},
+    {k:'metaDic', t:'¿Cuántas ventas te comprometes a cerrar de aquí al 31 de diciembre?', type:'number', req:1},
+    {k:'falta', t:'¿Qué te falta para lograr esa meta?', type:'area', req:1}
+  ]}
+];
+
+const f = document.getElementById('f');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function campo(q){
+  const r = q.req ? ' <span class="req">*</span>' : '';
+  let h = `<div class="q" data-k="${q.k}" data-type="${q.type}" data-req="${q.req?1:0}"><label class="t" ${['text','number','area','select'].includes(q.type)?`for="${q.k}"`:''}>${esc(q.t)}${r}</label>`;
+  if (q.type==='text') h += `<input type="text" id="${q.k}" name="${q.k}" autocomplete="off">`;
+  if (q.type==='number') h += `<input type="number" id="${q.k}" name="${q.k}" inputmode="numeric" min="0" step="1">`;
+  if (q.type==='area') h += `<textarea id="${q.k}" name="${q.k}"></textarea>`;
+  if (q.type==='select') h += `<select id="${q.k}" name="${q.k}"><option value="">Elige una opción</option>${q.o.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`;
+  if (q.type==='radio'||q.type==='check'){
+    const it = q.type==='radio'?'radio':'checkbox';
+    h += `<div class="opts">${q.o.map(o=>`<label class="opt"><input type="${it}" name="${q.k}" value="${esc(o)}">${esc(o)}</label>`).join('')}`;
+    if (q.type==='check') h += `<label class="opt"><input type="checkbox" name="${q.k}" value="__otro">Otro</label><input type="text" name="${q.k}_otro" placeholder="¿Cuál?" style="display:none">`;
+    h += `</div>`;
+  }
+  if (q.type==='scale'){
+    h += `<div class="scale">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<label><input type="radio" name="${q.k}" value="${n}">${n}</label>`).join('')}</div><div class="scale-ends"><span>Nada seguro</span><span>Totalmente seguro</span></div>`;
+  }
+  if (q.type==='trio'){
+    h += `<div class="trio">${[['citas','Citas'],['demos','Demos'],['ventas','Ventas']].map(([k,l])=>`<div><small>${l}</small><input type="number" name="${k}" inputmode="numeric" min="0" step="1" aria-label="${l} por semana"></div>`).join('')}</div>`;
+  }
+  return h + `<div class="msg">Esta pregunta es obligatoria.</div></div>`;
+}
+
+f.innerHTML = PASOS.map((p,i)=>`<section class="step${i?'':' on'}"><h2>${esc(p.t)}</h2><p class="sub">${esc(p.s)}</p>${p.q.map(campo).join('')}</section>`).join('');
+
+f.addEventListener('input', e => { const q = e.target.closest('.q'); if (q) q.classList.remove('bad'); });
+f.addEventListener('change', e => {
+  if (e.target.value==='__otro'){
+    const t = f.querySelector(`[name="${e.target.name}_otro"]`);
+    t.style.display = e.target.checked ? 'block' : 'none';
+    if (e.target.checked) t.focus();
+  }
+  const q = e.target.closest('.q'); if (q) q.classList.remove('bad');
+});
+
+function valor(q){
+  const k=q.dataset.k, t=q.dataset.type;
+  if (t==='check'){
+    const v=[...q.querySelectorAll(`input[name="${k}"]:checked`)].map(i=>i.value).filter(v=>v!=='__otro');
+    const otro=q.querySelector(`[name="${k}_otro"]`);
+    if (q.querySelector('input[value="__otro"]').checked && otro.value.trim()) v.push('Otro: '+otro.value.trim());
+    return v;
+  }
+  if (t==='radio'||t==='scale'){ const c=q.querySelector(`input[name="${k}"]:checked`); return c?c.value:''; }
+  if (t==='trio'){ return ['citas','demos','ventas'].map(n=>q.querySelector(`[name="${n}"]`).value.trim()); }
+  return q.querySelector(`[name="${k}"]`).value.trim();
+}
+function valido(q){
+  const v=valor(q), t=q.dataset.type;
+  if (t==='trio') return v.every(x=>x!=='' && Number(x)>=0 && Number.isInteger(Number(x)));
+  if (t==='number') return q.dataset.req!=='1' && v==='' ? true : (v!=='' && Number(v)>=0 && Number.isInteger(Number(v)));
+  if (q.dataset.req!=='1') return true;
+  return Array.isArray(v) ? v.length>0 : v!=='';
+}
+
+let paso=0;
+const steps=[...f.querySelectorAll('.step')], prev=document.getElementById('prev'), next=document.getElementById('next');
+function pintar(){
+  steps.forEach((s,i)=>s.classList.toggle('on',i===paso));
+  prev.hidden = paso===0;
+  next.textContent = paso===steps.length-1 ? 'Enviar respuestas' : 'Siguiente';
+  document.getElementById('bar').style.width = ((paso+1)/steps.length*100)+'%';
+  document.getElementById('steplabel').textContent = `Paso ${paso+1} de ${steps.length}`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+prev.onclick=()=>{ if(paso>0){paso--;pintar();} };
+next.onclick=async()=>{
+  const malos=[...steps[paso].querySelectorAll('.q')].filter(q=>!valido(q));
+  malos.forEach(q=>q.classList.add('bad'));
+  if (malos.length){ malos[0].scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  if (paso<steps.length-1){ paso++; pintar(); return; }
+  const data={};
+  f.querySelectorAll('.q').forEach(q=>{
+    const v=valor(q);
+    if (q.dataset.type==='trio'){ data.citas=Number(v[0]); data.demos=Number(v[1]); data.ventas=Number(v[2]); }
+    else if (q.dataset.type==='number'||q.dataset.type==='scale') data[q.dataset.k]= v===''?'':Number(v);
+    else data[q.dataset.k]=v;
+  });
+  next.disabled=true; next.textContent='Enviando…';
+  try{
+    if (SCRIPT_URL){
+      await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});
+    } else { console.log('Modo prueba', data); }
+    f.hidden=true; document.getElementById('nav').hidden=true; document.getElementById('done').hidden=false;
+    document.getElementById('bar').style.width='100%'; document.getElementById('steplabel').textContent='Completado';
+  }catch(err){
+    next.disabled=false; next.textContent='Reintentar envío';
+    alert('No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
+  }
+};
+if (!SCRIPT_URL) document.getElementById('warn').style.display='block';
+</script>
+</body>
+</html>
